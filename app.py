@@ -1,61 +1,121 @@
+"""
+ERCOT Multi-Dashboard Hub
+Home page integrating generation analysis and large load interconnection tracking
+"""
 import streamlit as st
-import streamlit.components.v1 as components
 
 # Configuration
 st.set_page_config(
-    page_title="Texas Electric Generation and Load Growth Dashboard",
+    page_title="ERCOT Dashboard Hub",
     layout="wide",
-    page_icon="⚡"
+    page_icon="⚡",
+    initial_sidebar_state="expanded"
 )
 
-# Constants
-MAP_URL = "https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/"
-IFRAME_HEIGHT = 900
+# Title and intro
+st.title("🔌 ERCOT Energy Insights Dashboard Hub")
 
-# Title
-st.title("Texas Electric Generation and Load Growth Dashboard")
-
-# Main content
 st.markdown("""
-This dashboard embeds an interactive Leaflet web map visualizing electric generation growth and spatial infrastructure context across Texas. The map provides critical insights into the geographic distribution of generation facilities and their relevance to ERCOT system planning, helping stakeholders understand the evolving energy landscape.
-
-Key features of the embedded map include:
-- **Electric Generation Growth**: Visualization of generation capacity expansion over time
-- **Spatial Infrastructure Context**: Mapping of transmission lines, substations, and key infrastructure
-- **ERCOT System Planning**: Contextual data supporting reliability and planning decisions
+A unified platform for analyzing Texas's electric generation and large load growth through multiple complementary analytical lenses.
 """)
 
-# Embed the iframe
-components.iframe(MAP_URL, height=IFRAME_HEIGHT, scrolling=True)
+st.divider()
 
-# Sidebar
+# Three main dashboards
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.subheader("🗺️ Spatial Map")
+    st.markdown("""
+    **Interactive geographic visualization** of ERCOT generation facilities and transmission infrastructure.
+    
+    ✅ Generation facility locations  
+    ✅ Transmission corridors (345 kV, 765 kV)  
+    ✅ Substation positions  
+    ✅ ERCOT system layout  
+    
+    Navigate to explore spatial generation distribution.
+    """)
+    if st.button("🗺️ Open Spatial Map", use_container_width=True):
+        st.switch_page("pages/0_🗺️_Spatial_Map.py")
+
+with col2:
+    st.subheader("📊 Generation Analysis")
+    st.markdown("""
+    **Comprehensive analysis** of ERCOT generation data across fuel types including solar, wind, natural gas, and nuclear.
+    
+    ✅ Historical generation trends (daily, monthly, yearly)  
+    ✅ Fuel mix composition and shifts  
+    ✅ Peak and average generation metrics  
+    ✅ Year-over-year comparisons  
+    
+    Navigate to this dashboard to explore generation patterns and fuel diversity.
+    """)
+    if st.button("📊 Open Generation Dashboard", use_container_width=True):
+        st.switch_page("pages/1_📊_Abby_Generation.py")
+
+with col3:
+    st.subheader("⚡ Large Load Interconnections")
+    st.markdown("""
+    **Policy decision-support tool** tracking large electronic loads (data centers, AI facilities, mining operations) interconnecting to ERCOT.
+    
+    ✅ ~30+ large load projects tracked  
+    ✅ Capacity, status, and in-service timeline  
+    ✅ Geographic distribution and transmission infrastructure  
+    ✅ Sector breakdown and owner analysis  
+    
+    Navigate to this dashboard for infrastructure planning insights.
+    """)
+    if st.button("⚡ Open LLI Dashboard", use_container_width=True):
+        st.switch_page("pages/2_⚡_Rafael_LLI.py")
+
+st.divider()
+
+# About section
+st.subheader("About This Hub")
+st.markdown("""
+This multi-dashboard platform enables ERCOT stakeholders—planners, analysts, policymakers, and researchers—to understand Texas's evolving energy landscape from multiple perspectives:
+
+- **Spatial Map**: Geographic visualization of generation facilities and transmission infrastructure across ERCOT
+- **Generation Dashboard**: Understand fuel diversity, capacity trends, and system-wide generation patterns
+- **Large Load Dashboard**: Track new large electronic loads and their infrastructure implications
+
+All three dashboards integrate complementary views of ERCOT's generation and infrastructure data, supporting informed decision-making for grid reliability, planning, and policy.
+""")
+
 with st.sidebar:
-    st.header("Dashboard Information")
-
-    with st.expander("Project Overview", expanded=True):
+    st.header("ℹ️ Dashboard Guide")
+    
+    with st.expander("Using This Hub", expanded=True):
         st.markdown("""
-        This dashboard connects spatial generation data with comprehensive ERCOT system analysis. By embedding an externally hosted Leaflet map, it provides a centralized view of Texas's electric infrastructure while linking to specialized analytical dashboards for deeper insights into load growth and generation trends.
+        Use the page selector in the left sidebar to navigate between:
+        - **🗺️ Spatial Map** - Geographic generation & transmission visualization
+        - **📊 Generation Dashboard** - Fuel-level analysis and trends
+        - **⚡ LLI Dashboard** - Large load tracking and infrastructure
         """)
-
-    with st.expander("Related Dashboards & Analyses"):
+    
+    with st.expander("Dashboard Descriptions"):
         st.markdown("""
-        **Rafael's Dashboard**: Focuses on new electric load and demand growth, tracking large load interconnections and their impact on ERCOT's transmission system.
-
-        **Abby's Dashboard**: Provides detailed ERCOT data analysis and trends, including generation mix, fuel type breakdowns, and historical performance metrics.
+        **🗺️ Spatial Map**: Interactive Leaflet-based map showing generation facilities, transmission corridors, and substations across ERCOT service territory.
+        
+        **📊 Generation Analysis**: Historical generation trends by fuel type, including daily, monthly, and yearly patterns plus KPIs.
+        
+        **⚡ Large Loads**: Projects interconnecting to ERCOT with 500+ MW capacity, including status, timeline, sector, and geographic distribution.
         """)
-
-    with st.expander("Data Sources & Attribution"):
+    
+    with st.expander("Data Sources"):
         st.markdown("""
-        **Spatial Data**: Generated using QGIS and qgis2web for web-compatible Leaflet maps.
-
-        **ERCOT Datasets**: Incorporates high-level ERCOT planning data, transmission infrastructure information, and generation capacity details (sourced from public ERCOT reports and planning documents).
+        - ERCOT public reports and planning data
+        - QGIS/qgis2web spatial data
+        - TAC reports and LLI queue information
+        - PUCT filings and public announcements
+        - Historical generation and demand data
         """)
-
-    with st.expander("Contact / Credits"):
+    
+    with st.expander("Technical Info"):
         st.markdown("""
-        **Developed by**: ERCOT Dashboard Team
-
-        **Contact**: [Placeholder - Contact information]
-
-        **Credits**: Built with Streamlit, Leaflet, and QGIS. Data attribution to ERCOT and public sources.
+        **Framework**: Streamlit 1.32+  
+        **Visualization**: Plotly, Leaflet (via iframe)  
+        **Data Processing**: Pandas, NumPy  
+        **Deployment**: Streamlit Community Cloud
         """)

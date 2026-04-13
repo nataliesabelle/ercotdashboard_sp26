@@ -1,63 +1,170 @@
-# Texas Electric Generation and Load Growth Dashboard
+# ERCOT Multi-Dashboard Hub
+
+A unified Streamlit platform for analyzing Texas's electric generation and large load growth through interconnected analytical dashboards.
 
 ## Overview
 
-This Streamlit dashboard provides a centralized platform for visualizing and analyzing Texas's electric generation and load growth through an embedded interactive Leaflet web map. The dashboard contextualizes spatial generation data within the broader ERCOT system analysis framework.
+This repository contains an integrated dashboard hub that combines two complementary analytical perspectives:
 
-The embedded map complements specialized analytical dashboards by offering geospatial insights into generation infrastructure:
+- **📊 Abby's Generation Dashboard**: Historical ERCOT generation analysis by fuel type (solar, wind, natural gas, nuclear, etc.)
+- **⚡ Rafael's Large Load Interconnection (LLI) Dashboard**: Tracking of large electronic loads (data centers, AI facilities) and their transmission impacts
 
-- **Rafael's Dashboard**: Tracks new electric load and demand growth, focusing on large load interconnections and their transmission system impacts.
-- **Abby's Dashboard**: Delivers detailed ERCOT data analysis and trends, including generation mix breakdowns, fuel type performance, and historical metrics.
-
-Together, these tools support comprehensive ERCOT planning and policy decisions.
+Both dashboards draw from publicly available ERCOT data to support grid planning, reliability analysis, and policy decisions.
 
 ## Architecture
 
-The dashboard follows a modular architecture:
+### Multi-Page Structure
 
-- **Leaflet Map Hosting**: The interactive web map is hosted on GitHub Pages, generated from QGIS using qgis2web for optimal web compatibility.
-- **Streamlit Embedding**: The main dashboard uses Streamlit to embed the map via a secure HTTPS iframe, ensuring seamless integration without re-implementing map functionality.
-- **Contextual Analysis**: Sidebar sections provide project overview, related analyses, data sources, and credits for a complete user experience.
+```
+ercotdashboard_sp26/
+├── app.py                        # Hub home page
+├── requirements.txt             # Root dependencies
+├── pages/
+│   ├── 1_📊_Abby_Generation.py   # Generation dashboard page
+│   └── 2_⚡_Rafael_LLI.py        # Large load dashboard page
+├── abby_dashboard/
+│   ├── app.py                   # Generation analysis logic
+│   ├── cleaned.csv              # Generation data
+│   └── requirements.txt         # Dashboard dependencies
+└── rafael_dashboard/
+    ├── app.py                   # LLI analysis logic
+    ├── data/
+    │   ├── projects.csv         # LLI project data
+    │   ├── queue_categories.csv # Queue history
+    │   └── transmission_backbone.json  # Infrastructure
+    └── requirements.txt         # Dashboard dependencies
+```
+
+### Navigation
+
+The main app (`app.py`) serves as the home/hub page with buttons to navigate to:
+1. **Generation Dashboard** (pages/1_📊_Abby_Generation.py)
+2. **LLI Dashboard** (pages/2_⚡_Rafael_LLI.py)
+
+Streamlit's built-in sidebar provides seamless page navigation.
+
+## Dashboards
+
+### 📊 Generation Dashboard (Abby)
+
+Comprehensive analysis of ERCOT generation patterns:
+- **Metrics**: Peak generation, average generation, total energy, top fuel type
+- **Visualizations**: 
+  - Total generation over time
+  - Daily generation trends
+  - Generation by fuel type
+  - Monthly and yearly patterns
+  - Fuel mix composition
+- **Data**: Daily generation by fuel (2022+)
+- **Interactivity**: Year selector to filter KPIs
+
+### ⚡ Large Load Interconnection Dashboard (Rafael)
+
+Policy decision-support tool for tracking large electronic loads:
+- **Coverage**: ~30+ major projects (data centers, AI facilities, crypto mining)
+- **Features**:
+  - Interactive map with project locations
+  - Status filtering (Operational, Under Review, To Be Operational)
+  - Sector analysis (AI/Data Center, Crypto Mining, Other)
+  - Transmission infrastructure overlay
+  - Owner/Developer breakdown
+  - Queue category timeline
+- **Data**: ERCOT LLI public data, TAC reports, PUCT filings
+- **Interactivity**: Year slider, multi-select filters, detailed project table
 
 ## Deployment
 
 ### Local Development
 
-1. Ensure Python 3.8+ is installed
-2. Install dependencies:
+1. **Clone and setup**:
    ```bash
-   pip install streamlit
+   git clone https://github.com/nataliesabelle/ercotdashboard_sp26.git
+   cd ercotdashboard_sp26
    ```
-3. Run the application:
+
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run locally**:
    ```bash
    streamlit run app.py
    ```
-4. Access the dashboard at `http://localhost:8501`
+
+4. **Access**: Open `http://localhost:8501` in browser
 
 ### Streamlit Community Cloud
 
-The application is designed for deployment on Streamlit Community Cloud:
+1. Connect repository to [Streamlit Community Cloud](https://streamlit.io/cloud)
+2. Deploy from main branch
+3. The app will be available at: `https://share.streamlit.io/nataliesabelle/ercotdashboard_sp26/main/app.py`
 
-1. Push the repository to GitHub
-2. Connect the repository to Streamlit Community Cloud
-3. Deploy directly from the main branch
-4. The app will be accessible via the provided Streamlit URL
+## Data Sources
 
-## Data Notes
+- **Generation Data**: ERCOT historical generation CSV (cleaned.csv)
+- **LLI Data**: ERCOT TAC reports, queue tracking, PUCT filings
+- **Transmission Infrastructure**: ERCOT 2024 Constraints Report, Planning Guide
+- **All data sourced from public ERCOT documents and announcements**
 
-This dashboard integrates multiple data sources for comprehensive ERCOT analysis:
+## Technical Stack
 
-- **Spatial Generation Data**: Geographic information on electric generation facilities, processed through QGIS for web mapping
-- **ERCOT Planning Data**: High-level transmission infrastructure and system planning information from public ERCOT reports
-- **Infrastructure Context**: Transmission corridors, substations, and key energy infrastructure details
+- **Framework**: Streamlit 1.32+
+- **Visualization**: Plotly
+- **Data Processing**: Pandas, NumPy
+- **Python**: 3.8+
+- **Deployment**: Streamlit Community Cloud
 
-All data is sourced from public, non-sensitive ERCOT documents and planning materials.
+## File Structure Details
 
-## Attribution
+### Dashboard Pages
+- Each page corresponds to a dashboard and is standalone
+- Pages are located in `pages/` directory with numeric prefixes (Streamlit convention)
+- Emoji icons in filenames appear in the sidebar navigation
 
-- **Map Technology**: Leaflet.js and QGIS/qgis2web
-- **Dashboard Framework**: Streamlit
-- **Data Sources**: ERCOT public reports and planning documents
-- **Development**: ERCOT Dashboard Team
+### Data Directories
+- **abby_dashboard/data**: `cleaned.csv` with daily ERCOT generation by fuel
+- **rafael_dashboard/data**: 
+  - `projects.csv`: LLI project details
+  - `queue_categories.csv`: Historical queue size tracking
+  - `transmission_backbone.json`: GeoJSON infrastructure data
 
-For questions or contributions, please contact the development team. 
+## Usage Guide
+
+### Home Hub
+On launch, users see the hub page with:
+- Overview of dashboard purposes
+- Quick-access buttons to navigate to each dashboard
+- Sidebar with additional information
+
+### Navigating Between Pages
+- Use the page selector in the left sidebar
+- Or click dashboard buttons on the home page
+
+### Generation Dashboard
+- Select year to update KPI metrics
+- Explore generation trends across all fuel types
+- Compare daily, monthly, and yearly patterns
+
+### LLI Dashboard
+- Adjust year slider to see projects coming online
+- Filter by status, sector, and owner
+- Hover over map markers for project details
+- Review detailed project table with search/sort
+
+## Attribution & Credits
+
+Built with:
+- **Streamlit**: Interactive web framework
+- **Plotly**: Advanced visualizations
+- **ERCOT**: Public data and planning documents
+- **UT Austin CE377K**: Energy Systems course (Spring 2026)
+
+## Contact
+
+For questions or suggestions, contact the ERCOT Dashboard Team.
+
+---
+
+**Last Updated**: April 2026  
+**Status**: Production-ready for Streamlit Community Cloud 
