@@ -1,0 +1,652 @@
+
+[     UTC     ] Logs for teamtexas2.streamlit.app/
+────────────────────────────────────────────────────────────────────────────────────────
+[23:11:16] 🚀 Starting up repository: 'ercotdashboard_sp26', branch: 'main', main module: 'app.py'
+[23:11:16] 🐙 Cloning repository...
+[23:11:16] 🐙 Cloning into '/mount/src/ercotdashboard_sp26'...
+
+[23:11:16] 🐙 Cloned repository!
+[23:11:16] 🐙 Pulling code changes from Github...
+[23:11:17] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Using Python 3.14.3 environment at /home/adminuser/venv
+Resolved 36 packages in 514ms
+Prepared 36 packages in 1.94s
+Installed 36 packages in 163ms
+ + altair==6.0.0
+ + [2026-04-13 23:11:20.155071] attrs==26.1.0
+ + blinker==1.9.0
+ + cachetools==7.0.5
+ + certifi==2026.2.25
+ + charset-normalizer==3.4.7
+ + click==8.3.2
+ + gitdb==4.0.12
+ + gitpython==3.1.46
+ + idna==3.11
+ + jinja2==3.1.6
+ + jsonschema==4.26.0
+ + jsonschema-specifications==2025.9.1
+ + markupsafe==3.0.3
+ + narwhals==2.19.0
+ + numpy==2.4.4
+ + [2026-04-13 23:11:20.155267] packaging==26.0
+ + pandas==3.0.2
+ + pillow==12.2.0
+ + plotly==6.7.0
+ + protobuf==7.34.1[2026-04-13 23:11:20.155439] 
+ + pyarrow==23.0.1
+ + pydeck==0.9.1
+ + python-dateutil==2.9.0.post0[2026-04-13 23:11:20.155587] 
+ + referencing==0.37.0
+ + requests==2.33.1
+ + rpds-py==[2026-04-13 23:11:20.155703] 0.30.0
+ + six==1.17.0
+ + smmap==5.0.3
+ + streamlit==1.56.0
+ +[2026-04-13 23:11:20.155984]  tenacity==9.1.4
+ + toml==0.10.2
+ + tornado==6.5.5
+ + typing-extensions==4.15.0
+ + urllib3[2026-04-13 23:11:20.156142] ==2.6.3
+ + watchdog==6.0.0
+Checking if Streamlit is installed
+Found Streamlit version 1.56.0 in the environment
+Installing rich for an improved exception logging
+Using uv pip install.
+Using Python 3.14.3 environment at /home/adminuser/venv
+Resolved 4 packages in 202ms
+Prepared 4 packages in 130ms
+Installed 4 packages in 16ms
+ + markdown-it-py==4.0.0
+ + mdurl==[2026-04-13 23:11:22.777589] 0.1.2
+ + pygments==2.20.0
+ + rich==15.0.0
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[23:11:23] 🐍 Python dependencies were installed from /mount/src/ercotdashboard_sp26/requirements.txt using uv.
+Check if streamlit is installed
+Streamlit is already installed
+[23:11:24] 📦 Processed dependencies!
+
+
+
+2026-04-13 23:11:41.616 Please replace `st.components.v1.iframe` with `st.iframe`.
+
+`st.components.v1.iframe` will be removed after 2026-06-01.
+2026-04-13 23:12:02.225 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:12:02.298 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:12:02.400 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:12:02.453 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:490 in run                                                                 
+                                                                                
+  /mount/src/ercotdashboard_sp26/pages/1_📊_Abby_Generation.py:108 in <module>  
+                                                                                
+    105 │   monthly = data.groupby("month")[VALUE_COL].sum().reset_index()      
+    106 │   fig4 = px.line(monthly, x="month", y=VALUE_COL, markers=True, titl  
+    107 │   fig4.update_layout(template="plotly_white", height=350, margin=dic  
+  ❱ 108 │   st.plotly_chart(fig4, use_container_width=True)                     
+    109                                                                         
+    110 with col2:                                                              
+    111 │   fuel_time = data.groupby([TIME_COL, FUEL_COL])[VALUE_COL].sum().re  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/metrics_  
+  util.py:563 in wrapped_func                                                   
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/elements/plotly_  
+  chart.py:727 in plotly_chart                                                  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/plotly/io/_json.py:222 in   
+  to_json                                                                       
+                                                                                
+    219 │   │   for trace in fig_dict.get("data", []):                          
+    220 │   │   │   trace.pop("uid", None)                                      
+    221 │                                                                       
+  ❱ 222 │   return to_json_plotly(fig_dict, pretty=pretty, engine=engine)       
+    223                                                                         
+    224                                                                         
+    225 def write_json(fig, file, validate=True, pretty=False, remove_uids=Tru  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/plotly/io/_json.py:143 in   
+  to_json_plotly                                                                
+                                                                                
+    140 │   │   from _plotly_utils.utils import PlotlyJSONEncoder               
+    141 │   │                                                                   
+    142 │   │   return _safe(                                                   
+  ❱ 143 │   │   │   json.dumps(plotly_object, cls=PlotlyJSONEncoder, **opts),   
+    144 │   │   )                                                               
+    145 │   elif engine == "orjson":                                            
+    146 │   │   JsonConfig.validate_orjson()                                    
+                                                                                
+  /usr/local/lib/python3.14/json/__init__.py:242 in dumps                       
+                                                                                
+    239 │   │   skipkeys=skipkeys, ensure_ascii=ensure_ascii,                   
+    240 │   │   check_circular=check_circular, allow_nan=allow_nan, indent=ind  
+    241 │   │   separators=separators, default=default, sort_keys=sort_keys,    
+  ❱ 242 │   │   **kw).encode(obj)                                               
+    243                                                                         
+    244                                                                         
+    245 _default_decoder = JSONDecoder(object_hook=None, object_pairs_hook=Non  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/_plotly_utils/utils.py:162  
+  in encode                                                                     
+                                                                                
+    159 │   │                                                                   
+    160 │   │   """                                                             
+    161 │   │   # this will raise errors in a normal-expected way               
+  ❱ 162 │   │   encoded_o = super(PlotlyJSONEncoder, self).encode(o)            
+    163 │   │   # Brute force guessing whether NaN or Infinity values are in t  
+    164 │   │   # We catch false positive cases (e.g. strings such as titles,   
+    165 │   │   # but this is ok since the intention is to skip the decoding /  
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:202 in encode                       
+                                                                                
+    199 │   │   # This doesn't pass the iterator directly to ''.join() because  
+    200 │   │   # exceptions aren't as detailed.  The list call should be roug  
+    201 │   │   # equivalent to the PySequence_Fast that ''.join() would do.    
+  ❱ 202 │   │   chunks = self.iterencode(o, _one_shot=True)                     
+    203 │   │   if not isinstance(chunks, (list, tuple)):                       
+    204 │   │   │   chunks = list(chunks)                                       
+    205 │   │   return ''.join(chunks)                                          
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:263 in iterencode                   
+                                                                                
+    260 │   │   │   │   markers, self.default, _encoder, indent, floatstr,      
+    261 │   │   │   │   self.key_separator, self.item_separator, self.sort_key  
+    262 │   │   │   │   self.skipkeys, _one_shot)                               
+  ❱ 263 │   │   return _iterencode(o, 0)                                        
+    264                                                                         
+    265 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,   
+    266 │   │   _key_separator, _item_separator, _sort_keys, _skipkeys, _one_s  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/_plotly_utils/utils.py:238  
+  in default                                                                    
+                                                                                
+    235 │   │   │   │   return encoding_method(obj)                             
+    236 │   │   │   except NotEncodable:                                        
+    237 │   │   │   │   pass                                                    
+  ❱ 238 │   │   return _json.JSONEncoder.default(self, obj)                     
+    239 │                                                                       
+    240 │   @staticmethod                                                       
+    241 │   def encode_as_plotly(obj):                                          
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:182 in default                      
+                                                                                
+    179 │   │   │   │   return super().default(o)                               
+    180 │   │                                                                   
+    181 │   │   """                                                             
+  ❱ 182 │   │   raise TypeError(f'Object of type {o.__class__.__name__} '       
+    183 │   │   │   │   │   │   f'is not JSON serializable')                    
+    184 │                                                                       
+    185 │   def encode(self, o):                                                
+────────────────────────────────────────────────────────────────────────────────
+TypeError: Object of type Period is not JSON serializable
+[NOTE] when serializing list item 0
+[NOTE] when serializing numpy.ndarray object
+[NOTE] when serializing dict item 'x'
+[NOTE] when serializing list item 0
+[NOTE] when serializing dict item 'data'
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:486 in run                                                                 
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/pages_ma  
+  nager.py:160 in get_page_script_byte_code                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_cache.py:72 in get_bytecode                                       
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/magic.py:45 in add_magic                                                 
+                                                                                
+  /usr/local/lib/python3.14/ast.py:46 in parse                                  
+                                                                                
+     43 │   │   │   raise ValueError(f"Unsupported major version: {major}")     
+     44 │   │   feature_version = minor                                         
+     45 │   # Else it should be an int giving the minor version for 3.x.        
+  ❱  46 │   return compile(source, filename, mode, flags,                       
+     47 │   │   │   │      _feature_version=feature_version, optimize=optimize  
+     48                                                                         
+     49                                                                         
+────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
+   /mount/src/ercotdashboard_sp26/pages/2_⚡_Rafael_LLI.py:21                   
+          'st.set_page_config(                                                  
+          ▲                                                                     
+────────────────────────────────────────────────────────────────────────────────
+SyntaxError: unterminated string literal (detected at line 21)
+2026-04-13 23:12:26.103 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:12:26.168 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:12:26.269 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:12:26.310 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:490 in run                                                                 
+                                                                                
+  /mount/src/ercotdashboard_sp26/pages/1_📊_Abby_Generation.py:108 in <module>  
+                                                                                
+    105 │   monthly = data.groupby("month")[VALUE_COL].sum().reset_index()      
+    106 │   fig4 = px.line(monthly, x="month", y=VALUE_COL, markers=True, titl  
+    107 │   fig4.update_layout(template="plotly_white", height=350, margin=dic  
+  ❱ 108 │   st.plotly_chart(fig4, use_container_width=True)                     
+    109                                                                         
+    110 with col2:                                                              
+    111 │   fuel_time = data.groupby([TIME_COL, FUEL_COL])[VALUE_COL].sum().re  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/metrics_  
+  util.py:563 in wrapped_func                                                   
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/elements/plotly_  
+  chart.py:727 in plotly_chart                                                  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/plotly/io/_json.py:222 in   
+  to_json                                                                       
+                                                                                
+    219 │   │   for trace in fig_dict.get("data", []):                          
+    220 │   │   │   trace.pop("uid", None)                                      
+    221 │                                                                       
+  ❱ 222 │   return to_json_plotly(fig_dict, pretty=pretty, engine=engine)       
+    223                                                                         
+    224                                                                         
+    225 def write_json(fig, file, validate=True, pretty=False, remove_uids=Tru  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/plotly/io/_json.py:143 in   
+  to_json_plotly                                                                
+                                                                                
+    140 │   │   from _plotly_utils.utils import PlotlyJSONEncoder               
+    141 │   │                                                                   
+    142 │   │   return _safe(                                                   
+  ❱ 143 │   │   │   json.dumps(plotly_object, cls=PlotlyJSONEncoder, **opts),   
+    144 │   │   )                                                               
+    145 │   elif engine == "orjson":                                            
+    146 │   │   JsonConfig.validate_orjson()                                    
+                                                                                
+  /usr/local/lib/python3.14/json/__init__.py:242 in dumps                       
+                                                                                
+    239 │   │   skipkeys=skipkeys, ensure_ascii=ensure_ascii,                   
+    240 │   │   check_circular=check_circular, allow_nan=allow_nan, indent=ind  
+    241 │   │   separators=separators, default=default, sort_keys=sort_keys,    
+  ❱ 242 │   │   **kw).encode(obj)                                               
+    243                                                                         
+    244                                                                         
+    245 _default_decoder = JSONDecoder(object_hook=None, object_pairs_hook=Non  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/_plotly_utils/utils.py:162  
+  in encode                                                                     
+                                                                                
+    159 │   │                                                                   
+    160 │   │   """                                                             
+    161 │   │   # this will raise errors in a normal-expected way               
+  ❱ 162 │   │   encoded_o = super(PlotlyJSONEncoder, self).encode(o)            
+    163 │   │   # Brute force guessing whether NaN or Infinity values are in t  
+    164 │   │   # We catch false positive cases (e.g. strings such as titles,   
+    165 │   │   # but this is ok since the intention is to skip the decoding /  
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:202 in encode                       
+                                                                                
+    199 │   │   # This doesn't pass the iterator directly to ''.join() because  
+    200 │   │   # exceptions aren't as detailed.  The list call should be roug  
+    201 │   │   # equivalent to the PySequence_Fast that ''.join() would do.    
+  ❱ 202 │   │   chunks = self.iterencode(o, _one_shot=True)                     
+    203 │   │   if not isinstance(chunks, (list, tuple)):                       
+    204 │   │   │   chunks = list(chunks)                                       
+    205 │   │   return ''.join(chunks)                                          
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:263 in iterencode                   
+                                                                                
+    260 │   │   │   │   markers, self.default, _encoder, indent, floatstr,      
+    261 │   │   │   │   self.key_separator, self.item_separator, self.sort_key  
+    262 │   │   │   │   self.skipkeys, _one_shot)                               
+  ❱ 263 │   │   return _iterencode(o, 0)                                        
+    264                                                                         
+    265 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,   
+    266 │   │   _key_separator, _item_separator, _sort_keys, _skipkeys, _one_s  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/_plotly_utils/utils.py:238  
+  in default                                                                    
+                                                                                
+    235 │   │   │   │   return encoding_method(obj)                             
+    236 │   │   │   except NotEncodable:                                        
+    237 │   │   │   │   pass                                                    
+  ❱ 238 │   │   return _json.JSONEncoder.default(self, obj)                     
+    239 │                                                                       
+    240 │   @staticmethod                                                       
+    241 │   def encode_as_plotly(obj):                                          
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:182 in default                      
+                                                                                
+    179 │   │   │   │   return super().default(o)                               
+    180 │   │                                                                   
+    181 │   │   """                                                             
+  ❱ 182 │   │   raise TypeError(f'Object of type {o.__class__.__name__} '       
+    183 │   │   │   │   │   │   f'is not JSON serializable')                    
+    184 │                                                                       
+    185 │   def encode(self, o):                                                
+────────────────────────────────────────────────────────────────────────────────
+TypeError: Object of type Period is not JSON serializable
+[NOTE] when serializing list item 0
+[NOTE] when serializing numpy.ndarray object
+[NOTE] when serializing dict item 'x'
+[NOTE] when serializing list item 0
+[NOTE] when serializing dict item 'data'
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:486 in run                                                                 
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/pages_ma  
+  nager.py:160 in get_page_script_byte_code                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_cache.py:72 in get_bytecode                                       
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/magic.py:45 in add_magic                                                 
+                                                                                
+  /usr/local/lib/python3.14/ast.py:46 in parse                                  
+                                                                                
+     43 │   │   │   raise ValueError(f"Unsupported major version: {major}")     
+     44 │   │   feature_version = minor                                         
+     45 │   # Else it should be an int giving the minor version for 3.x.        
+  ❱  46 │   return compile(source, filename, mode, flags,                       
+     47 │   │   │   │      _feature_version=feature_version, optimize=optimize  
+     48                                                                         
+     49                                                                         
+────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
+   /mount/src/ercotdashboard_sp26/pages/2_⚡_Rafael_LLI.py:21                   
+          'st.set_page_config(                                                  
+          ▲                                                                     
+────────────────────────────────────────────────────────────────────────────────
+SyntaxError: unterminated string literal (detected at line 21)
+2026-04-13 23:17:05.086 Session with id 105d61c8-2200-44a9-abf9-ee50257cb22e is already connected! Connecting to a new session.
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:486 in run                                                                 
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/pages_ma  
+  nager.py:160 in get_page_script_byte_code                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_cache.py:72 in get_bytecode                                       
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/magic.py:45 in add_magic                                                 
+                                                                                
+  /usr/local/lib/python3.14/ast.py:46 in parse                                  
+                                                                                
+     43 │   │   │   raise ValueError(f"Unsupported major version: {major}")     
+     44 │   │   feature_version = minor                                         
+     45 │   # Else it should be an int giving the minor version for 3.x.        
+  ❱  46 │   return compile(source, filename, mode, flags,                       
+     47 │   │   │   │      _feature_version=feature_version, optimize=optimize  
+     48                                                                         
+     49                                                                         
+────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
+   /mount/src/ercotdashboard_sp26/pages/2_⚡_Rafael_LLI.py:21                   
+          'st.set_page_config(                                                  
+          ▲                                                                     
+────────────────────────────────────────────────────────────────────────────────
+SyntaxError: unterminated string literal (detected at line 21)
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:486 in run                                                                 
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/pages_ma  
+  nager.py:160 in get_page_script_byte_code                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_cache.py:72 in get_bytecode                                       
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/magic.py:45 in add_magic                                                 
+                                                                                
+  /usr/local/lib/python3.14/ast.py:46 in parse                                  
+                                                                                
+     43 │   │   │   raise ValueError(f"Unsupported major version: {major}")     
+     44 │   │   feature_version = minor                                         
+     45 │   # Else it should be an int giving the minor version for 3.x.        
+  ❱  46 │   return compile(source, filename, mode, flags,                       
+     47 │   │   │   │      _feature_version=feature_version, optimize=optimize  
+     48                                                                         
+     49                                                                         
+────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
+   /mount/src/ercotdashboard_sp26/pages/2_⚡_Rafael_LLI.py:21                   
+          'st.set_page_config(                                                  
+          ▲                                                                     
+────────────────────────────────────────────────────────────────────────────────
+SyntaxError: unterminated string literal (detected at line 21)
+2026-04-13 23:20:29.923 Please replace `st.components.v1.iframe` with `st.iframe`.
+
+`st.components.v1.iframe` will be removed after 2026-06-01.
+2026-04-13 23:20:33.770 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:20:33.808 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:20:33.870 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-04-13 23:20:33.909 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/exec_code.py:129 in exec_func_with_error_handling                        
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:687 in code_to_exec                                     
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:166 in _mpa_v1                                          
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/navigation/page.  
+  py:490 in run                                                                 
+                                                                                
+  /mount/src/ercotdashboard_sp26/pages/1_📊_Abby_Generation.py:108 in <module>  
+                                                                                
+    105 │   monthly = data.groupby("month")[VALUE_COL].sum().reset_index()      
+    106 │   fig4 = px.line(monthly, x="month", y=VALUE_COL, markers=True, titl  
+    107 │   fig4.update_layout(template="plotly_white", height=350, margin=dic  
+  ❱ 108 │   st.plotly_chart(fig4, use_container_width=True)                     
+    109                                                                         
+    110 with col2:                                                              
+    111 │   fuel_time = data.groupby([TIME_COL, FUEL_COL])[VALUE_COL].sum().re  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/runtime/metrics_  
+  util.py:563 in wrapped_func                                                   
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/streamlit/elements/plotly_  
+  chart.py:727 in plotly_chart                                                  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/plotly/io/_json.py:222 in   
+  to_json                                                                       
+                                                                                
+    219 │   │   for trace in fig_dict.get("data", []):                          
+    220 │   │   │   trace.pop("uid", None)                                      
+    221 │                                                                       
+  ❱ 222 │   return to_json_plotly(fig_dict, pretty=pretty, engine=engine)       
+    223                                                                         
+    224                                                                         
+    225 def write_json(fig, file, validate=True, pretty=False, remove_uids=Tru  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/plotly/io/_json.py:143 in   
+  to_json_plotly                                                                
+                                                                                
+    140 │   │   from _plotly_utils.utils import PlotlyJSONEncoder               
+    141 │   │                                                                   
+    142 │   │   return _safe(                                                   
+  ❱ 143 │   │   │   json.dumps(plotly_object, cls=PlotlyJSONEncoder, **opts),   
+    144 │   │   )                                                               
+    145 │   elif engine == "orjson":                                            
+    146 │   │   JsonConfig.validate_orjson()                                    
+                                                                                
+  /usr/local/lib/python3.14/json/__init__.py:242 in dumps                       
+                                                                                
+    239 │   │   skipkeys=skipkeys, ensure_ascii=ensure_ascii,                   
+    240 │   │   check_circular=check_circular, allow_nan=allow_nan, indent=ind  
+    241 │   │   separators=separators, default=default, sort_keys=sort_keys,    
+  ❱ 242 │   │   **kw).encode(obj)                                               
+    243                                                                         
+    244                                                                         
+    245 _default_decoder = JSONDecoder(object_hook=None, object_pairs_hook=Non  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/_plotly_utils/utils.py:162  
+  in encode                                                                     
+                                                                                
+    159 │   │                                                                   
+    160 │   │   """                                                             
+    161 │   │   # this will raise errors in a normal-expected way               
+  ❱ 162 │   │   encoded_o = super(PlotlyJSONEncoder, self).encode(o)            
+    163 │   │   # Brute force guessing whether NaN or Infinity values are in t  
+    164 │   │   # We catch false positive cases (e.g. strings such as titles,   
+    165 │   │   # but this is ok since the intention is to skip the decoding /  
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:202 in encode                       
+                                                                                
+    199 │   │   # This doesn't pass the iterator directly to ''.join() because  
+    200 │   │   # exceptions aren't as detailed.  The list call should be roug  
+    201 │   │   # equivalent to the PySequence_Fast that ''.join() would do.    
+  ❱ 202 │   │   chunks = self.iterencode(o, _one_shot=True)                     
+    203 │   │   if not isinstance(chunks, (list, tuple)):                       
+    204 │   │   │   chunks = list(chunks)                                       
+    205 │   │   return ''.join(chunks)                                          
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:263 in iterencode                   
+                                                                                
+    260 │   │   │   │   markers, self.default, _encoder, indent, floatstr,      
+    261 │   │   │   │   self.key_separator, self.item_separator, self.sort_key  
+    262 │   │   │   │   self.skipkeys, _one_shot)                               
+  ❱ 263 │   │   return _iterencode(o, 0)                                        
+    264                                                                         
+    265 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,   
+    266 │   │   _key_separator, _item_separator, _sort_keys, _skipkeys, _one_s  
+                                                                                
+  /home/adminuser/venv/lib/python3.14/site-packages/_plotly_utils/utils.py:238  
+  in default                                                                    
+                                                                                
+    235 │   │   │   │   return encoding_method(obj)                             
+    236 │   │   │   except NotEncodable:                                        
+    237 │   │   │   │   pass                                                    
+  ❱ 238 │   │   return _json.JSONEncoder.default(self, obj)                     
+    239 │                                                                       
+    240 │   @staticmethod                                                       
+    241 │   def encode_as_plotly(obj):                                          
+                                                                                
+  /usr/local/lib/python3.14/json/encoder.py:182 in default                      
+                                                                                
+    179 │   │   │   │   return super().default(o)                               
+    180 │   │                                                                   
+    181 │   │   """                                                             
+  ❱ 182 │   │   raise TypeError(f'Object of type {o.__class__.__name__} '       
+    183 │   │   │   │   │   │   f'is not JSON serializable')                    
+    184 │                                                                       
+    185 │   def encode(self, o):                                                
+────────────────────────────────────────────────────────────────────────────────
+TypeError: Object of type Period is not JSON serializable
+[NOTE] when serializing list item 0
+[NOTE] when serializing numpy.ndarray object
+[NOTE] when serializing dict item 'x'
+[NOTE] when serializing list item 0
+[NOTE] when serializing dict item 'data'
