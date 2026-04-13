@@ -24,7 +24,8 @@ DASHBOARDS = {
     "Texas Generation (ArcGIS)": {
         "description": "Statewide electricity generation map for Texas",
         "url": "https://www.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=4ca140dcd1cd4cbcaa5d38a77e273397&theme=light&heading=true&legend=true&share=true&center=-97.66697648907267,31.510804989798014&scale=4622324.434309",
-        "height": 700,
+        "height": 600,
+        "width": 700,
     },
 
     # Example placeholders – enable later
@@ -60,10 +61,13 @@ st.sidebar.caption("Powered by Streamlit + ArcGIS")
 dashboard = DASHBOARDS[selected_dashboard]
 
 st.subheader(selected_dashboard)
-st.write(dashboard["description"])
+st.write(dashboard["description"])  
+
+# Embed the external URL using an iframe
+html_code = f'''\n<iframe width="{dashboard['width']}" height="{dashboard['height']}" allow="local-network-access; geolocation" title="{selected_dashboard}" src="{dashboard['url']}" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>\n'''  
 
 components.html(
-    dashboard["url"],
+    html_code,
     height=dashboard["height"],
     scrolling=True,
 )
